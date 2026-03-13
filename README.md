@@ -48,5 +48,5 @@ This application allows users to submit feedback and enables administrators to m
 
 ###Preview
 
-![Preview](feedback-frontend\preview.png)
+![Preview](preview.png)
 
