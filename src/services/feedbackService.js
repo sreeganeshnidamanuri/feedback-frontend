@@ -1,26 +1,28 @@
 import axios from "axios";
 
-const API_URL = "http://localhost:8080/api/feedbacks";
+const API = axios.create({
+  baseURL: "https://feedback-backend-xfzw.onrender.com",
+});
 
 // Get all feedbacks
-const getAllFeedbacks = () => axios.get(API_URL);
+const getAllFeedbacks = () => API.get("/api/feedbacks");
 
 // Create feedback
-const createFeedback = (data) => axios.post(API_URL, data);
+const createFeedback = (data) => API.post("/api/feedbacks", data);
 
 // Delete feedback
-const deleteFeedback = (id) => axios.delete(`${API_URL}/${id}`);
+const deleteFeedback = (id) => API.delete(`/api/feedbacks/${id}`);
 
 // Update status
 const updateStatus = (id, status) =>
-  axios.patch(`${API_URL}/${id}/status?status=${status}`);
+  API.patch(`/api/feedbacks/${id}/status?status=${status}`);
 
-// Update feedback (for edit modal)
+// Update feedback
 const updateFeedback = (id, data) =>
-  axios.put(`${API_URL}/${id}`, data);
+  API.put(`/api/feedbacks/${id}`, data);
 
 // Get statistics
-const getStats = () => axios.get(`${API_URL}/stats`);
+const getStats = () => API.get("/api/feedbacks/stats");
 
 export default {
   getAllFeedbacks,
