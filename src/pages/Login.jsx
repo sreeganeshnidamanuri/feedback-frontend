@@ -12,16 +12,18 @@ export default function Login() {
   };
 
   const handleLogin = async (e) => {
-    e.preventDefault();
-    try {
-      const res = await axios.post("http://localhost:8080/api/auth/login", form);
-      localStorage.setItem("token", res.data.token);
-      navigate("/admin");
-    } catch {
-      alert("Invalid credentials");
-    }
-  };
-
+  e.preventDefault();
+  try {
+    const res = await axios.post(
+      "https://feedback-backend-xfzw.onrender.com/api/auth/login",
+      form
+    );
+    localStorage.setItem("token", res.data.token);
+    navigate("/admin");
+  } catch {
+    alert("Invalid credentials");
+  }
+};
   return (
     <div className="auth-container">
       <form className="auth-card" onSubmit={handleLogin}>
